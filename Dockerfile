@@ -19,6 +19,9 @@ RUN mkdir -p /etc/nginx/test
 RUN pip install setuptools
 RUN pip install testinfra
 
+# Copying testinfra config file to etc/nginx/test directory
+COPY test.py /etc/nginx/test/test.py
+
 # https://github.com/codecasts/php-alpine/issues/21
 RUN ln -s /usr/bin/php7 /usr/bin/php
 
@@ -59,3 +62,6 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
+
+# Running tests
+RUN pytest /etc/nginx/test/test.py
