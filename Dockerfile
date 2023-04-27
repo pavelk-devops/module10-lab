@@ -1,10 +1,11 @@
-FROM alpine:3.11
-
-ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+FROM alpine:3.16
 
 # make sure you can use HTTPS
 RUN apk --update add ca-certificates
-RUN echo "https://dl.bintray.com/php-alpine/v3.11/php-7.4" >> /etc/apk/repositories
+
+# Repository added
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/main" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/community" >> /etc/apk/repositories
 
 # Install packages
 RUN apk --no-cache add php php-fpm php-opcache php-openssl php-curl \
