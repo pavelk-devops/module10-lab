@@ -17,6 +17,7 @@ RUN mkdir -p /etc/nginx/test
 
 #Install setuptools and testinfra
 
+RUN RUN python3 -m ensurepip
 RUN pip install setuptools
 RUN pip install testinfra
 
