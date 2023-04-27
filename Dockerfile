@@ -25,9 +25,6 @@ RUN pip3 install testinfra
 # Copying testinfra config file to etc/nginx/test directory
 COPY test.py /etc/nginx/test/test.py
 
-# https://github.com/codecasts/php-alpine/issues/21
-RUN ln -s /usr/bin/php7 /usr/bin/php
-
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
