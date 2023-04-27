@@ -18,8 +18,8 @@ RUN mkdir -p /etc/nginx/test
 #Install setuptools and testinfra
 
 RUN python3 -m ensurepip
-RUN pip install setuptools
-RUN pip install testinfra
+RUN pip3 install setuptools
+RUN pip3 install testinfra
 
 # Copying testinfra config file to etc/nginx/test directory
 COPY test.py /etc/nginx/test/test.py
