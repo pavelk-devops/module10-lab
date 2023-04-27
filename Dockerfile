@@ -8,7 +8,16 @@ RUN echo "https://dl.bintray.com/php-alpine/v3.11/php-7.4" >> /etc/apk/repositor
 
 # Install packages
 RUN apk --no-cache add php php-fpm php-opcache php-openssl php-curl \
-    nginx supervisor curl
+    nginx supervisor curl \
+    openrc python3
+
+# Making /etc/nginx/test directory
+RUN mkdir -p /etc/nginx/test
+
+#Install setuptools and testinfra
+
+RUN pip install setuptools
+RUN pip install testinfra
 
 # https://github.com/codecasts/php-alpine/issues/21
 RUN ln -s /usr/bin/php7 /usr/bin/php
